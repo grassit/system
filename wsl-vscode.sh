@@ -11,3 +11,13 @@ alias brc='nano /etc/bash.bashrc'
 
 /lxrun /uninstall /full
 bash
+
+---------------------------------------
+
+{
+    "window.zoomLevel": 1,
+    "editor.minimap.enabled": false,
+    "workbench.colorTheme": "Visual Studio Light",
+    "git.ignoreMissingGitWarning": true,
+    "php.executablePath": null,
+}
