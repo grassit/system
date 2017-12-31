@@ -40,6 +40,7 @@
 			find /var/www/html -iname '*phpmyadmin*' -exec rm -rf {} \;
 			cd /var/www/html && wget https://www.phpmyadmin.net/downloads/phpMyAdmin-latest-all-languages.zip
 			find /var/www/html -type f -iname '*phpmyadmin*.zip' -exec unzip {} \;
+			find /var/www/html -type d -iname 'phpmyadmin-*' -exec mv {} phpmyadmin \;
 			sleep 2h
 			find /var/www/html -iname '*phpmyadmin*' -exec rm -rf {} \;
 			tmux kill-session
