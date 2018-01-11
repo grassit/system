@@ -13,7 +13,7 @@ Notable combos:
     ^xyz .* # All that starts with xyz and a space, and all after it in that line.
     \w
     \s
-    \K
+    \K      # Negate all before it, in that line, so the bring all that is after it.
 
 Notes:
 
