@@ -10,12 +10,12 @@ Basic characters to match with:
 Notable combos:
 
     .* 
-    ^xyz .* # All that starts with xyz and all after it in that line.
+    ^xyz .* # All that starts with xyz and a space, and all after it in that line.
     \w
     \s
     \K
 
 Notes:
 
-    # The dot says "any character." The asterisk says "Match till end of line."
+    # The dot says "Match any character." The asterisk says "Repeat previous matching pattern till the end of line."
     # sed -i == sed inverbose.
