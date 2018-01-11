@@ -40,9 +40,10 @@ cat <<-"CRON_WEEKLY" > /etc/cron.weekly/nses_cron_weekly
 	for dir in /var/www/html/*/wp-content; do cd "$dir" && cd cache && rm -rf *; done;
 	zip -r /root/backups/dirs/html-$(date +\%F-\%T).zip /var/www/html
 	find /root/backups/dirs/* -mtime +30 -exec rm {} \;
+	
 	mysqldump -u root -pPASSWORD --all-databases > /root/backups/db/db-$(date +\%F-\%T).sql
 	find /root/backups/db/* -mtime +30 -exec rm {} \;
 CRON_WEEKLY
 chmod +x /etc/cron.weekly/nses_cron_weekly
 
-echo "Change DB root password in crontab."
+echo "Change DB root password in weekly crontab."
