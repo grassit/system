@@ -25,3 +25,28 @@
 0 0 * * 0 /opt/cron.weekly.sh
 
 # Add DB password to cron.
+
+# ------------------------------------------------------------------------------------- #
+
+cat <<-"CRON_DAILY" > /etc/cron.daily/nses_cron_daily
+	cat /dev/null > /var/mail/root
+	for dir in /var/www/html/*/; do cd "$dir" && /usr/local/bin/wp plugin update --all --allow-root; done
+	for dir in /var/www/html/*/; do cd "$dir" && /usr/local/bin/wp core update --allow-root; done
+	for dir in /var/www/html/*/; do cd "$dir" && /usr/local/bin/wp theme update --all --allow-root; done
+	chown www-data:www-data /var/www/html/* -R && find /var/www/html/* -type d -exec chmod 755 {} \; && find /var/www/html/* -type f -exec chmod 644 {} \;
+CRON_DAILY
+chmod +x /etc/cron.daily/nses_cron_daily
+
+# ---------------------------------------------------------------------------------------------------- #
+
+cat <<-"CRON_WEEKLY" > /etc/cron.weekly/nses_cron_weekly
+	certbot renew -q
+	
+	for dir in /var/www/html/*/wp-content; do cd "$dir" && cd cache && rm -rf *; done;
+	zip -r /root/backups/dirs/html-$(date +\%F-\%T).zip /var/www/html
+	find /root/backups/dirs/* -mtime +30 -exec rm {} \;
+	mysqldump -u root -pPASSWORD --all-databases > /root/backups/db/db-$(date +\%F-\%T).sql
+	find /root/backups/db/* -mtime +30 -exec rm {} \;
+CRON_WEEKLY
+chmod +x /etc/cron.weekly/nses_cron_weekly
+echo "Change DB root password in crontab."
