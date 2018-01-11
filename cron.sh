@@ -37,7 +37,7 @@ cat <<-"CRON_DAILY" > /etc/cron.daily/nses_cron_daily
 CRON_DAILY
 chmod +x /etc/cron.daily/nses_cron_daily
 
-# ---------------------------------------------------------------------------------------------------- #
+# ------------------------------------------------------------------------------------- #
 
 cat <<-"CRON_WEEKLY" > /etc/cron.weekly/nses_cron_weekly
 	certbot renew -q
