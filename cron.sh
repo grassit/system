@@ -21,12 +21,9 @@
 #
 # Make sure DBU rootp is inserted directly after -p.
 
-0 0 * * * /opt/cron_daily.sh
-0 0 * * 0 /opt/cron.weekly.sh
-
-# Add DB password to cron.
-
 # ------------------------------------------------------------------------------------- #
+
+mkdir -p /root/backups/{db,dirs}
 
 cat <<-"CRON_DAILY" > /etc/cron.daily/nses_cron_daily
 	cat /dev/null > /var/mail/root
@@ -49,4 +46,5 @@ cat <<-"CRON_WEEKLY" > /etc/cron.weekly/nses_cron_weekly
 	find /root/backups/db/* -mtime +30 -exec rm {} \;
 CRON_WEEKLY
 chmod +x /etc/cron.weekly/nses_cron_weekly
+
 echo "Change DB root password in crontab."
