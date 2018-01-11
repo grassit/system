@@ -18,8 +18,6 @@
 # -atime +1, -mtime +1, ctime +1 == Inode last accessed respectively, n*24 HOURS (common, 1*24).
 #
 # Always give full paths in cron.
-#
-# Make sure DBU rootp is inserted directly after -p.
 
 # ------------------------------------------------------------------------------------- #
 
