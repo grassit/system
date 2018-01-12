@@ -1,5 +1,5 @@
-A Unix socket is the interface between 2 or more processes.
-A TCP/IP socket is the interface between a process and 1 connector, or more.
+* A Unix socket is the interface between 2 or more processes.
+* A TCP/IP socket is the interface between a process and 1 connector, or more.
 
 CGI, for all its types, is the interface between a webserver and a backend feature.
 	Client action > Server request > CGI of some type > Backend action (whatever the result is for the browser).
