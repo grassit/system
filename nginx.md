@@ -1,3 +1,5 @@
+A Unix socket is the interface between 2 or more processes. An IP socket is the interface between a process and 1 ore more connectors.
+
 CGI, for all its types, is the interface between a webserver and a backend feature.
 	Client action > Server request > CGI of some type > Backend action (whatever the result is for the browser).
 		A CGI of any kind is a unix socket because it is an iterface between two or more processes (the webserver) and (other processes like PHP).
@@ -9,6 +11,3 @@ PHP-FPM is a FastCGI for PHP (if the request is done for data constructed from P
 Nginx is a reverse proxy because it both gets requesets from the user, and bring the user internal data from a CGI.
 	Think of Nginx like a big huge M (one tip is the client, the middle is Nginx, and the other tip is the CGI).
 		Actually it would best be called bilateral proxy instead just forward proxy or reverse proxy, but reverse here is bilateral.
-
-* A Unix socket is the interface between 2 or more processes.
-* An IP socket is the interface between a process and 1 ore more connectors.
